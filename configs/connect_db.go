@@ -22,7 +22,7 @@ func ConnectDB() *mongo.Client {
 	// dbUserName := os.Getenv("DB_USERNAME")
 	// dbPassword := os.Getenv("DB_PASSWORD")
 	// urlDB := "mongodb+srv://" + dbUserName + ":" + dbPassword + "@cluster0.h98mko5.mongodb.net/?retryWrites=true&w=majority"
-	urlDB := "mongodb+srv://golang_mongodb:wxXPUaajy9mAYB2W@cluster0.h98mko5.mongodb.net/?retryWrites=true&w=majority"
+	urlDB := "mongodb+srv://golang_mongodb:wxXPUaajy9mAYB2W@cluster0.h98mko5.mongodb.net/?retryWrites=true&w=majority?ssl=true"
 	client, err := mongo.NewClient(options.Client().ApplyURI(urlDB))
 	if err != nil {
 		log.Fatal(err.Error())
