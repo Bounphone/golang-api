@@ -2,6 +2,9 @@ package configs
 
 import (
 	"context"
+	"log"
+	"time"
+
 	// "log"
 	// "os"
 
@@ -20,12 +23,19 @@ func ConnectDB() *mongo.Client {
 	// dbPassword := os.Getenv("DB_PASSWORD")
 	// urlDB := "mongodb+srv://" + dbUserName + ":" + dbPassword + "@cluster0.h98mko5.mongodb.net/?retryWrites=true&w=majority"
 	urlDB := "mongodb+srv://golang_mongodb:wxXPUaajy9mAYB2W@cluster0.h98mko5.mongodb.net/?retryWrites=true&w=majority"
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(urlDB))
+	client, err := mongo.NewClient(options.Client().ApplyURI(urlDB))
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
-	if err := client.Ping(context.TODO(), readpref.Primary()); err != nil {
-		panic(err)
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	err = client.Connect(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer client.Disconnect(ctx)
+	err = client.Ping(ctx, readpref.Primary())
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	return client
