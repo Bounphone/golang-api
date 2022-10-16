@@ -25,7 +25,7 @@ func ConnectDB() *mongo.Client {
 	urlDB := "mongodb+srv://golang_mongodb:wxXPUaajy9mAYB2W@cluster0.h98mko5.mongodb.net/?retryWrites=true&w=majority"
 	client, err := mongo.NewClient(options.Client().ApplyURI(urlDB))
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	err = client.Connect(ctx)
