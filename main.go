@@ -2,7 +2,7 @@ package main
 
 import (
 	"crypto/tls"
-	"golang_rest_api/configs"
+	// "golang_rest_api/configs"
 	"golang_rest_api/routes"
 	"net/http"
 
