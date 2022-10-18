@@ -19,7 +19,7 @@ import (
 		// if err != nil {
 		// 	log.Fatalf("Error loading .env file")
 		// }
-		configs.ConnectDB()
+		// configs.ConnectDB()
 		r := gin.Default()
 		// r.SetTrustedProxies([]string{"192.168.1.2"})
 		routes.UserProfileRoutes(r)
