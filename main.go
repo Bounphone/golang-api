@@ -1,10 +1,11 @@
 package main
 
 import (
-	"crypto/tls"
+	// "crypto/tls"
+	"golang_rest_api/controllers"
 	// "golang_rest_api/configs"
-	"golang_rest_api/routes"
-	"net/http"
+	// "golang_rest_api/routes"
+	// "net/http"
 
 	// "log"
 	// "os"
@@ -14,7 +15,7 @@ import (
 )
 
 	func main() {
-		http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+		// http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 		// err := godotenv.Load("fly.toml")
 		// if err != nil {
 		// 	log.Fatalf("Error loading .env file")
@@ -22,7 +23,8 @@ import (
 		// configs.ConnectDB()
 		r := gin.Default()
 		// r.SetTrustedProxies([]string{"192.168.1.2"})
-		routes.UserProfileRoutes(r)
+		r.POST("/userProfile", controllers.CreateUser)
+	r.GET("/userProfile/:userId", controllers.GetUserByID)
 		r.Run()
 		// port := os.Getenv("PORT")
 		// r.Run(":" + port)
