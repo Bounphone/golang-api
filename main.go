@@ -29,6 +29,7 @@
 package main
 
 import (
+	"golang_rest_api/configs"
 	"io"
 	"log"
 	"net/http"
@@ -36,6 +37,7 @@ import (
 )
 
 func main() {
+	configs.ConnectDB()
 	port := os.Getenv("PORT")
 	helloHandler := func(w http.ResponseWriter, req *http.Request) {
 		io.WriteString(w, "Hello, world!\n")
