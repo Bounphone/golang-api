@@ -17,7 +17,7 @@ import (
 )
 
 func ConnectDB() *mongo.Client {
-	err := godotenv.Load(".env")
+	err := godotenv.Load("../.env")
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
