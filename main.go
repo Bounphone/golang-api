@@ -1,8 +1,11 @@
 package main
 
 import (
+	"crypto/tls"
 	"golang_rest_api/configs"
 	"golang_rest_api/routes"
+	"net/http"
+
 	// "log"
 	// "os"
 
@@ -11,6 +14,7 @@ import (
 )
 
 func main() {
+	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	// err := godotenv.Load("fly.toml")
 	// if err != nil {
 	// 	log.Fatalf("Error loading .env file")

@@ -1,6 +1,6 @@
-# fly.toml file generated for golang-rest-api on 2022-10-16T14:23:43+07:00
+# fly.toml file generated for golang-api on 2022-10-18T22:30:04+07:00
 
-app = "golang-rest-api"
+app = "golang-api"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -9,10 +9,10 @@ processes = []
   builder = "paketobuildpacks/builder:base"
   buildpacks = ["gcr.io/paketo-buildpacks/go"]
 
-
 [env]
+  DB_PASSWORD = "wxXPUaajy9mAYB2W"
+  DB_USERNAME = "golang_mongodb"
   PORT = "8080"
-  
 
 [experimental]
   allowed_public_ports = []
@@ -30,7 +30,6 @@ processes = []
     type = "connections"
 
   [[services.ports]]
-    force_https = true
     handlers = ["http"]
     port = 80
 
