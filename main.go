@@ -2,6 +2,7 @@ package main
 
 import (
 	// "crypto/tls"
+	"golang_rest_api/configs"
 	"net/http"
 	// "golang_rest_api/configs"
 	// "golang_rest_api/routes"
@@ -38,7 +39,7 @@ func getAlbums(c *gin.Context) {
 		// if err != nil {
 		// 	log.Fatalf("Error loading .env file")
 		// }
-		// configs.ConnectDB()
+		configs.ConnectDB()
 		r := gin.Default()
 		// r.SetTrustedProxies([]string{"192.168.1.2"})
 		r.GET("/", getAlbums)
