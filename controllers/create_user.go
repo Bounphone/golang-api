@@ -60,7 +60,6 @@ func GetUserByID(c *gin.Context) {
 	userId := c.Param("userId")
 	var user models.User
 	defer cancel()
-
 	objId, _ := primitive.ObjectIDFromHex(userId)
 	err := userCollection.FindOne(ctx, bson.M{"_id": objId}).Decode(&user)
 	if err != nil {
