@@ -17,7 +17,7 @@ import (
 )
 
 func ConnectDB() *mongo.Client {
-	err := godotenv.Load("../.env")
+	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatalf(err.Error())
 	}
@@ -33,7 +33,7 @@ func ConnectDB() *mongo.Client {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	defer client.Disconnect(ctx)
+	// defer client.Disconnect(ctx)
 	err = client.Ping(ctx, readpref.Primary())
 	if err != nil {
 		log.Fatal(err.Error())

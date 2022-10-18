@@ -25,7 +25,7 @@ func CreateUser(c *gin.Context) {
 
 	//validate the request body
 	if err := c.ShouldBind(&user); err != nil {
-		c.JSON(http.StatusInternalServerError, responses.UserProfileResponse{Status: http.StatusBadRequest, Message: "error", Data: err.Error()})
+		c.JSON(http.StatusBadRequest, responses.UserProfileResponse{Status: http.StatusBadRequest, Message: "error", Data: err.Error()})
 		return
 	}
 	// if err := c.BodyParser(&user); err != nil {
