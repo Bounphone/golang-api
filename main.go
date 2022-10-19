@@ -3,7 +3,9 @@ package main
 import (
 	// "crypto/tls"
 	"golang_rest_api/configs"
+	"golang_rest_api/routes"
 	"net/http"
+
 	// "golang_rest_api/configs"
 	// "golang_rest_api/routes"
 	// "net/http"
@@ -42,7 +44,7 @@ func getAlbums(c *gin.Context) {
 		configs.ConnectDB()
 		r := gin.Default()
 		// r.SetTrustedProxies([]string{"192.168.1.2"})
-		r.GET("/", getAlbums)
+		routes.UserProfileRoutes(r)
 		r.Run()
 		// port := os.Getenv("PORT")
 		// r.Run(":" + port)
